@@ -38,17 +38,17 @@ const Skills = () => {
 	return (
 		<section id="skills" className="py-12 bg-base-200 mx-auto md:p-8">
 			<div className="text-center">
-				<h3 className="text-lg font-semibold text-orange-500">MY SKILLS</h3>
+				<h3 className="text-2xl font-semibold ">MY SKILLS</h3>
 				{/* <h2 className="text-2xl font-bold text-gray-800">
 					Expert in this technical <br /> web software
 				</h2> */}
 			</div>
 
-			<div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 px-6 hover:cursor-pointer">
+			<div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 px-6 hover:cursor-pointer">
 				{skills.map((skill, index) => (
 					<div
 						key={index}
-						className="flex flex-col items-center p-4 bg-base-100 shadow-lg rounded-lg hover:scale-105 transition transform duration-300 "
+						className="flex flex-col items-center p-4 bg-base-100 shadow-sm rounded-lg hover:scale-105 transition transform duration-300 "
 					>
 						<img src={skill.icon} alt={skill.name} className="w-12 h-12" />
 						<p className="mt-2 font-medium">{skill.name}</p>

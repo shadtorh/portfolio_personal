@@ -6,7 +6,7 @@ const Projects = () => {
 	return (
 		<section id="projects" className="py-12 px-6 text-center">
 			<h2 className="text-4xl font-bold mb-4">My Latest Work</h2>
-			<p className="text-gray-600 max-w-2xl mx-auto">
+			<p className="max-w-2xl mx-auto">
 				Welcome to my web development portfolio! Explore a collection of
 				projects showcasing my expertise in front-end development.
 			</p>

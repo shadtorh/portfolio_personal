@@ -13,7 +13,7 @@ const Hero = () => {
 	return (
 		<section
 			id="home"
-			className="h-screen flex flex-col lg:flex-row items-center justify-between px-10 lg:px-20 py-16 bg-base-200"
+			className="h-screen flex flex-col lg:flex-row items-center justify-between px-10 lg:px-20 py-16 bg-base-400"
 		>
 			{/* Left Side: Image (Hidden on small screens) */}
 			<div className="hidden lg:block w-1/2">

@@ -2,8 +2,8 @@ import React from "react";
 
 const ContactForm = () => {
 	return (
-		<div id="contact" className="bg-base-300 ">
-			<section className="bg-base-300 py-12 px-6 max-w-6xl mx-auto">
+		<div id="contact" className="bg-base-100 ">
+			<section className="bg-base-100 py-12 px-6 max-w-6xl mx-auto">
 				<h2 className="text-4xl font-bold text-center mb-6">Contact Me</h2>
 				<p className="text-gray-600 text-center mb-10">
 					Let's connect! Fill out the form or reach out via phone or email.

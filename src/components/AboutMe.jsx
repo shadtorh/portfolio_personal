@@ -10,7 +10,7 @@ import ProfileImg from "../assets/Person-coding-laptop-computer-desktop-desk-off
 
 const AboutMe = () => {
 	return (
-		<section id="about" className="py-16 px-4 md:px-20 bg-base-300">
+		<section id="about" className="py-16 px-4 md:px-20 bg-base-100">
 			<div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 				{/* Left - Profile Image */}
 				<div className="flex justify-center">
