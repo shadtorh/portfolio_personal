@@ -1,28 +1,34 @@
 import { FaCode, FaGraduationCap, FaFolderOpen } from "react-icons/fa";
+import { motion } from "framer-motion";
 import ProfileImg from "../assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
-// import {
-// 	SiVisualstudiocode,
-// 	SiFirebase,
-// 	SiMongodb,
-// 	SiFigma,
-// 	SiGit,
-// } from "react-icons/si";
 
 const AboutMe = () => {
 	return (
 		<section id="about" className="py-16 px-4 md:px-20 bg-base-100">
 			<div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
 				{/* Left - Profile Image */}
-				<div className="flex justify-center">
+				<motion.div
+					className="flex justify-center"
+					initial={{ opacity: 0, x: -100 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ amount: 0.2 }}
+					transition={{ duration: 0.2 }}
+				>
 					<img
-						src={ProfileImg} // Replace with actual image path
+						src={ProfileImg}
 						alt="Profile"
 						className="w-72 h-72 rounded-2xl shadow-lg object-cover"
 					/>
-				</div>
+				</motion.div>
 
 				{/* Right - Text Content */}
-				<div>
+				<motion.div
+					className="space-y-6"
+					initial={{ opacity: 0, x: 100 }}
+					whileInView={{ opacity: 1, x: 0 }}
+					viewport={{ amount: 0.2 }}
+					transition={{ duration: 0.2 }}
+				>
 					<h2 className="text-4xl font-bold text-center md:text-left mb-4 text-orange-500">
 						About Me
 					</h2>
@@ -35,46 +41,42 @@ const AboutMe = () => {
 
 					{/* Info Cards */}
 					<div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-						<div className="bg-base-100 shadow-lg rounded-xl p-4 flex flex-col items-center border border-gray-200">
-							<FaCode className="text-3xl text-blue-600 mb-2" />
-							<h3 className="font-semibold">Languages</h3>
-							<p className="text-sm text-gray-600 text-center">
-								HTML, CSS, JavaScript, React.js, Next.js
-							</p>
-						</div>
-						<div className="bg-base-100 shadow-lg rounded-xl p-4 flex flex-col items-center border border-gray-200">
-							<FaGraduationCap className="text-3xl text-blue-600 mb-2" />
-							<h3 className="font-semibold">Education</h3>
-							<p className="text-sm text-gray-600 text-center underline cursor-pointer">
-								B.Tech in Computer Science
-							</p>
-						</div>
-						<div className="bg-base-100 shadow-lg rounded-xl p-4 flex flex-col items-center border border-gray-200">
-							<FaFolderOpen className="text-3xl text-blue-600 mb-2" />
-							<h3 className="font-semibold">Projects</h3>
-							<p className="text-sm text-gray-600 text-center">
-								Built more than 5 projects
-							</p>
-						</div>
+						{[
+							{
+								icon: <FaCode className="text-3xl text-blue-600 mb-2" />,
+								title: "Languages",
+								description: "HTML, CSS, JavaScript, React.js, Next.js",
+							},
+							{
+								icon: (
+									<FaGraduationCap className="text-3xl text-blue-600 mb-2" />
+								),
+								title: "Education",
+								description: "B.Tech in Computer Science",
+							},
+							{
+								icon: <FaFolderOpen className="text-3xl text-blue-600 mb-2" />,
+								title: "Projects",
+								description: "Built more than 5 projects",
+							},
+						].map((card, index) => (
+							<motion.div
+								key={index}
+								className="bg-base-100 shadow-lg rounded-xl p-4 flex flex-col items-center border border-gray-200"
+								initial={{ opacity: 0, y: 50 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ amount: 0.2 }}
+								transition={{ duration: 0.2 }}
+							>
+								{card.icon}
+								<h3 className="font-semibold">{card.title}</h3>
+								<p className="text-sm text-gray-600 text-center">
+									{card.description}
+								</p>
+							</motion.div>
+						))}
 					</div>
-
-					{/* Tools */}
-					{/* <div className="mt-6">
-						<h4 className="text-lg font-semibold">Tools I use</h4>
-						<div className="flex space-x-4 mt-3">
-							{[SiVisualstudiocode, SiFirebase, SiMongodb, SiFigma, SiGit].map(
-								(Icon, index) => (
-									<div
-										key={index}
-										className="p-3 border rounded-lg shadow-md bg-white flex items-center justify-center"
-									>
-										<Icon className="text-2xl text-gray-700" />
-									</div>
-								)
-							)}
-						</div>
-					</div> */}
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);

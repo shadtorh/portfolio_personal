@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import HTML from "../assets/icons/html-1.svg";
 import CSS from "../assets/icons/css-3.svg";
 import JS from "../assets/icons/logo-javascript.svg";
@@ -38,21 +39,25 @@ const Skills = () => {
 	return (
 		<section id="skills" className="py-12 bg-base-200 mx-auto md:p-8">
 			<div className="text-center">
-				<h3 className="text-2xl font-semibold ">MY SKILLS</h3>
-				{/* <h2 className="text-2xl font-bold text-gray-800">
-					Expert in this technical <br /> web software
-				</h2> */}
+				<h3 className="text-3xl font-bold text-primary mb-4">MY SKILLS</h3>
+				<p className="text-gray-600">Technologies I work with</p>
 			</div>
 
-			<div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 px-6 hover:cursor-pointer">
+			<div className="mt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 px-4">
 				{skills.map((skill, index) => (
-					<div
+					<motion.div
 						key={index}
-						className="flex flex-col items-center p-4 bg-base-100 shadow-sm rounded-lg hover:scale-105 transition transform duration-300 "
+						className="flex flex-col items-center p-2 bg-base-100 shadow-md rounded-md hover:shadow-lg transition-all duration-300"
+						initial={{ scale: 0.8, opacity: 0 }}
+						whileInView={{ scale: 1, opacity: 1 }}
+						viewport={{ amount: 0.5 }} // Triggers animation every time 50% of the section is visible
+						transition={{ duration: 0.3, delay: index * 0.1 }}
 					>
-						<img src={skill.icon} alt={skill.name} className="w-12 h-12" />
-						<p className="mt-2 font-medium">{skill.name}</p>
-					</div>
+						<img src={skill.icon} alt={skill.name} className="w-7 h-7" />
+						<p className="mt-1 font-medium text-[10px] text-center">
+							{skill.name}
+						</p>
+					</motion.div>
 				))}
 			</div>
 		</section>
