@@ -5,13 +5,12 @@ import { motion } from "framer-motion";
 
 const Projects = () => {
 	return (
-		<section id="projects" className="py-12 px-6 text-center">
+		<section id="projects" className="py-16 px-6 bg-base-200 text-base-content">
 			{/* Section Title */}
 			<motion.h2
-				className="text-4xl font-bold mb-4"
+				className="text-5xl font-extrabold text-center mb-6"
 				initial={{ opacity: 0, y: -50 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ amount: 0.2 }}
+				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.8 }}
 			>
 				My Latest Work
@@ -19,52 +18,65 @@ const Projects = () => {
 
 			{/* Section Description */}
 			<motion.p
-				className="max-w-2xl mx-auto"
+				className="max-w-3xl mx-auto text-lg text-center mb-12"
 				initial={{ opacity: 0, y: 50 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ amount: 0.2 }}
-				transition={{ duration: 0.1 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8, delay: 0.2 }}
 			>
-				Welcome to my web development portfolio! Explore a collection of
-				projects showcasing my expertise in front-end development.
+				Welcome to my portfolio! Here are some of the projects I’ve worked on,
+				showcasing my skills in web development, mobile apps, and UI/UX design.
 			</motion.p>
 
 			{/* Projects Grid */}
 			<motion.div
-				className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-10"
+				className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
 				initial={{ opacity: 0 }}
-				whileInView={{ opacity: 1 }}
-				viewport={{ amount: 0.5 }}
-				transition={{ duration: 0.8, delay: 0.1 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.8, delay: 0.3 }}
 			>
 				{projects.map((project, index) => (
 					<motion.div
 						key={project.id}
-						className="relative group rounded-xl overflow-hidden shadow-lg"
+						className="relative group rounded-lg overflow-hidden shadow-lg bg-base-100 hover:shadow-xl transition-shadow duration-300"
 						initial={{ opacity: 0, y: 50 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ amount: 0.5 }}
+						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5, delay: index * 0.1 }}
 					>
-						{/* Project Image */}
-						<img
-							src={project.image}
-							alt={project.title}
-							className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-110"
-						/>
+						{/* Project Video */}
+						<div className="overflow-hidden">
+							<video
+								src={project.video}
+								alt={project.title}
+								className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-110"
+								autoPlay
+								loop
+								muted
+							></video>
+						</div>
 
 						{/* Project Details */}
-						<div className="absolute bottom-4 left-4 bg-white p-3 rounded-xl shadow-md flex items-center justify-between w-[80%]">
-							<div>
-								<h3 className="text-lg font-semibold">{project.title}</h3>
-								<p className="text-sm text-gray-500">{project.category}</p>
+						<div className="p-6">
+							<h3 className="text-xl font-bold mb-2">{project.title}</h3>
+							<p className="text-sm text-gray-500 mb-4">{project.category}</p>
+							<p className="text-sm leading-relaxed mb-4">
+								{project.description.slice(0, 100)}...
+							</p>
+							<div className="flex justify-between items-center">
+								<Link
+									to={`/project/${project.id}`}
+									className="text-primary font-semibold hover:underline"
+								>
+									Read More
+								</Link>
+								<Link
+									to={project.demoLink}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="btn btn-primary btn-sm"
+								>
+									View Demo
+								</Link>
 							</div>
-							<Link
-								to={`/project/${project.id}`}
-								className="bg-lime-400 w-8 h-8 flex items-center justify-center rounded-full text-black text-lg"
-							>
-								<FaAngleRight />
-							</Link>
 						</div>
 					</motion.div>
 				))}

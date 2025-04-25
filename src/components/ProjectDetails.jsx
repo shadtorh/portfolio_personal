@@ -17,7 +17,7 @@ const ProjectDetails = () => {
 	}
 
 	return (
-		<div className="flex flex-col justify-center items-center min-h-screen p-6 bg-white shadow-lg rounded-lg relative">
+		<div className="flex flex-col justify-center items-center min-h-screen p-6 bg-gray-50">
 			{/* Back Button */}
 			<button
 				onClick={() => navigate(-1)}
@@ -27,31 +27,44 @@ const ProjectDetails = () => {
 			</button>
 
 			{/* Content Wrapper */}
-			<div className="max-w-4xl w-full">
+			<div className="max-w-4xl w-full bg-white shadow-lg rounded-lg p-8">
 				{/* Project Title */}
-				<h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
+				<h2 className="text-4xl font-bold text-gray-900 mb-6 text-center">
 					{project.title}
 				</h2>
 
-				{/* Project Image */}
-				<img
-					src={project.image}
-					alt={project.title}
-					className="w-full max-h-64 object-cover rounded-lg shadow-md mb-4"
-				/>
+				{/* Project Video or Image */}
+				<div className="mb-6">
+					{project.video ? (
+						<video
+							src={project.video}
+							alt={project.title}
+							className="w-full max-h-96 object-cover rounded-lg shadow-md"
+							autoPlay
+							loop
+							muted
+						></video>
+					) : (
+						<img
+							src={project.image}
+							alt={project.title}
+							className="w-full max-h-96 object-cover rounded-lg shadow-md"
+						/>
+					)}
+				</div>
 
 				{/* Project Description */}
-				<p className="text-gray-700 text-lg text-center mb-4">
+				<p className="text-gray-700 text-lg leading-relaxed mb-6 text-center">
 					{project.description}
 				</p>
 
 				{/* Buttons */}
-				<div className="flex justify-center gap-4">
+				<div className="flex flex-wrap justify-center gap-4">
 					<a
-						href="https://github.com/shadtorh"
+						href={project.link}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="px-5 py-2 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-700 transition-transform hover:scale-105 shadow"
+						className="px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-700 transition-transform hover:scale-105 shadow"
 					>
 						GitHub
 					</a>
@@ -59,7 +72,7 @@ const ProjectDetails = () => {
 						href="https://www.linkedin.com/in/shadtorh/"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-transform hover:scale-105 shadow"
+						className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-transform hover:scale-105 shadow"
 					>
 						LinkedIn
 					</a>
@@ -67,7 +80,7 @@ const ProjectDetails = () => {
 						href={project.demoLink}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="px-5 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 transition-transform hover:scale-105 shadow"
+						className="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-500 transition-transform hover:scale-105 shadow"
 					>
 						Demo Project
 					</a>

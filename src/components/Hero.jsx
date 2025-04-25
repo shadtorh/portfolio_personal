@@ -1,10 +1,4 @@
-import {
-	FaFacebookF,
-	FaTwitter,
-	FaLinkedinIn,
-	FaInstagram,
-	FaDribbble,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -58,34 +52,18 @@ const Hero = () => {
 					transition={{ duration: 0.5, delay: 0.5 }}
 				>
 					<a
-						href="#"
+						href="https://github.com/shadtorh"
+						target="_blank"
 						className="text-white bg-orange-500 p-3 rounded-full hover:bg-orange-600"
 					>
-						<FaFacebookF size={20} />
+						<FaGithub size={20} />
 					</a>
 					<a
-						href="#"
-						className="text-white bg-orange-500 p-3 rounded-full hover:bg-orange-600"
-					>
-						<FaTwitter size={20} />
-					</a>
-					<a
-						href="#"
+						href="http://linkedin.com/in/shad-torh-9a2ab2352"
+						target="_blank"
 						className="text-white bg-orange-500 p-3 rounded-full hover:bg-orange-600"
 					>
 						<FaLinkedinIn size={20} />
-					</a>
-					<a
-						href="#"
-						className="text-white bg-orange-500 p-3 rounded-full hover:bg-orange-600"
-					>
-						<FaInstagram size={20} />
-					</a>
-					<a
-						href="#"
-						className="text-white bg-orange-500 p-3 rounded-full hover:bg-orange-600"
-					>
-						<FaDribbble size={20} />
 					</a>
 				</motion.div>
 

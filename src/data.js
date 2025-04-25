@@ -12,7 +12,7 @@
 // 	// { name: "Photoshop", icon: "/icons/photoshop.png" },
 // 	// { name: "Illustrator", icon: "/icons/illustrator.png" },
 // ];
-import project1Image from "./assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
+import project1Video from "./assets/e-commerce.mp4";
 import project2Image from "./assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
 import project3Image from "./assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
 import project4Image from "./assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
@@ -20,12 +20,11 @@ import project4Image from "./assets/Person-coding-laptop-computer-desktop-desk-o
 export const projects = [
 	{
 		id: 1,
-		title: "Frontend Project",
-		category: "web design",
-		image: project1Image, // Replace with your actual image path
+		title: "E-Commerce Platform",
+		category: "Web Applications",
+		video: project1Video, // Path to the video file
 		demoLink: "https://example.com/project1",
-		description:
-			"This is a description of the project. It can be as long as you need it to be. It can be as long as you need it to be. It can be as long as you need it to be. It can be as long as you need it to be. It can be as long as you need it to be. ",
+		description: "A modern e-commerce platform built with MERN stack...",
 	},
 	{
 		id: 2,

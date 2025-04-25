@@ -33,10 +33,12 @@ const AboutMe = () => {
 						About Me
 					</h2>
 					<p className="text-lg leading-relaxed text-center md:text-left">
-						I am an experienced Frontend Developer with over a decade of
-						professional expertise in the field. Throughout my career, I have
-						had the privilege of collaborating with prestigious organizations,
-						contributing to their success and growth.
+						I’m DevTorh, a passionate full-stack developer specializing in the
+						MERN stack. I build modern, scalable, and user-friendly web and
+						mobile apps, from e-commerce stores to music platforms and voter
+						systems. With a focus on clean design and performance, I turn ideas
+						into reality using React, Node.js, MongoDB, and Tailwind CSS. Let’s
+						build something amazing! 🚀
 					</p>
 
 					{/* Info Cards */}

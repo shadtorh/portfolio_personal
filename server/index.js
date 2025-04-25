@@ -32,6 +32,17 @@ app.post("/send-email", async (req, res) => {
 			to: process.env.EMAIL, // Email where you receive messages
 			subject: `New Message from ${name}`,
 			text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+			html: `
+                <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+                    <h2 style="color: #4CAF50;">New Message from ${name}</h2>
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #4CAF50;">${email}</a></p>
+                    <p><strong>Message:</strong></p>
+                    <div style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; border: 1px solid #ddd;">
+                        ${message.replace(/\n/g, "<br>")}
+                    </div>
+                </div>
+            `,
 			replyTo: email, // Allows you to reply directly to the user’s email
 		});
 
