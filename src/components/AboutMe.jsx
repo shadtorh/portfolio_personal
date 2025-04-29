@@ -1,84 +1,57 @@
-import { FaCode, FaGraduationCap, FaFolderOpen } from "react-icons/fa";
 import { motion } from "framer-motion";
-import ProfileImg from "../assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
+import ProfileImg from "../assets/Shad.jpg";
 
 const AboutMe = () => {
 	return (
-		<section id="about" className="py-16 px-4 md:px-20 bg-base-100">
-			<div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-				{/* Left - Profile Image */}
-				<motion.div
-					className="flex justify-center"
-					initial={{ opacity: 0, x: -100 }}
-					whileInView={{ opacity: 1, x: 0 }}
-					viewport={{ amount: 0.2 }}
-					transition={{ duration: 0.2 }}
-				>
-					<img
-						src={ProfileImg}
-						alt="Profile"
-						className="w-72 h-72 rounded-2xl shadow-lg object-cover"
-					/>
-				</motion.div>
+		<section id="about" className="py-20 px-4 bg-base-200 text-base-content">
+			<div className="container mx-auto max-w-7xl">
+				<div className="flex flex-col lg:flex-row items-center gap-12">
+					{/* Left - Profile Image */}
+					<motion.div
+						className="w-full lg:w-1/2 flex justify-center"
+						initial={{ opacity: 0, x: -100 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						viewport={{ amount: 0.2 }}
+						transition={{ duration: 0.5 }}
+					>
+						<img
+							src={ProfileImg}
+							alt="Profile"
+							className="w-full max-w-md h-auto rounded-3xl shadow-2xl object-cover"
+						/>
+					</motion.div>
 
-				{/* Right - Text Content */}
-				<motion.div
-					className="space-y-6"
-					initial={{ opacity: 0, x: 100 }}
-					whileInView={{ opacity: 1, x: 0 }}
-					viewport={{ amount: 0.2 }}
-					transition={{ duration: 0.2 }}
-				>
-					<h2 className="text-4xl font-bold text-center md:text-left mb-4 text-orange-500">
-						About Me
-					</h2>
-					<p className="text-lg leading-relaxed text-center md:text-left">
-						I’m DevTorh, a passionate full-stack developer specializing in the
-						MERN stack. I build modern, scalable, and user-friendly web and
-						mobile apps, from e-commerce stores to music platforms and voter
-						systems. With a focus on clean design and performance, I turn ideas
-						into reality using React, Node.js, MongoDB, and Tailwind CSS. Let’s
-						build something amazing! 🚀
-					</p>
-
-					{/* Info Cards */}
-					<div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-						{[
-							{
-								icon: <FaCode className="text-3xl text-blue-600 mb-2" />,
-								title: "Languages",
-								description: "HTML, CSS, JavaScript, React.js, Next.js",
-							},
-							{
-								icon: (
-									<FaGraduationCap className="text-3xl text-blue-600 mb-2" />
-								),
-								title: "Education",
-								description: "B.Tech in Computer Science",
-							},
-							{
-								icon: <FaFolderOpen className="text-3xl text-blue-600 mb-2" />,
-								title: "Projects",
-								description: "Built more than 5 projects",
-							},
-						].map((card, index) => (
-							<motion.div
-								key={index}
-								className="bg-base-100 shadow-lg rounded-xl p-4 flex flex-col items-center border border-gray-200"
-								initial={{ opacity: 0, y: 50 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ amount: 0.2 }}
-								transition={{ duration: 0.2 }}
-							>
-								{card.icon}
-								<h3 className="font-semibold">{card.title}</h3>
-								<p className="text-sm text-gray-600 text-center">
-									{card.description}
-								</p>
-							</motion.div>
-						))}
-					</div>
-				</motion.div>
+					{/* Right - Text Content */}
+					<motion.div
+						className="w-full lg:w-1/2 space-y-6"
+						initial={{ opacity: 0, x: 100 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						viewport={{ amount: 0.2 }}
+						transition={{ duration: 0.5 }}
+					>
+						<h2 className="text-4xl font-bold mb-6 text-primary">About Me</h2>
+						<p className="text-lg leading-relaxed">
+							Hi, I&apos;m Shad — a passionate Full Stack Developer who loves
+							building thoughtful, high-performing web and mobile applications.
+							I specialize in creating seamless user experiences using
+							technologies like React, Next.js, React Native, Node.js, Express,
+							PostgreSQL, MySQL, and Mongoose.
+						</p>
+						<p className="text-lg leading-relaxed">
+							I enjoy bringing both the frontend and backend together to build
+							complete, scalable solutions. Right now, I&apos;m focused on
+							developing full-stack projects that bridge design and
+							functionality, helping users and businesses connect in smarter
+							ways.
+						</p>
+						<p className="text-lg leading-relaxed">
+							When I&apos;m not coding, you&apos;ll find me exploring new
+							technologies, solving challenging problems, and continuously
+							leveling up my skills. I&apos;m excited to bring my creativity,
+							technical skills, and dedication to a forward-thinking team.
+						</p>
+					</motion.div>
+				</div>
 			</div>
 		</section>
 	);

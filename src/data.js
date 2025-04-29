@@ -12,8 +12,8 @@
 // 	// { name: "Photoshop", icon: "/icons/photoshop.png" },
 // 	// { name: "Illustrator", icon: "/icons/illustrator.png" },
 // ];
-import project1Video from "./assets/e-commerce.mp4";
-import project2Image from "./assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
+import projectImage1 from "./assets/E-COMMERCES.jpg";
+import projectImage2 from "./assets/JOBCONNECTS.jpg";
 import project3Image from "./assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
 import project4Image from "./assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
 
@@ -22,17 +22,18 @@ export const projects = [
 		id: 1,
 		title: "E-Commerce Platform",
 		category: "Web Applications",
-		video: project1Video, // Path to the video file
-		demoLink: "https://example.com/project1",
+		image: projectImage1, // Path to the video file
+		link: "https://github.com/shadtorh/e-commerce_store-web-app",
+		demoLink: "https://e-commerce-store-web-app-brown.vercel.app",
 		description: "A modern e-commerce platform built with MERN stack...",
 	},
 	{
 		id: 2,
-		title: "Geo Based App",
-		category: "mobile app",
-		image: project2Image,
+		title: "JobConnect",
+		category: "Web Applications",
+		image: projectImage2,
 		link: "https://example.com/project2",
-		demoLink: "https://example.com/project2",
+		demoLink: "https://jobconnect-eight.vercel.app",
 		description:
 			"lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, dolores!Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley ",
 	},
@@ -43,15 +44,6 @@ export const projects = [
 		image: project3Image,
 		link: "https://example.com/project3",
 		demoLink: "https://example.com/project3",
-		description:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galleyLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-	},
-	{
-		id: 4,
-		title: "UI/UX Designing",
-		category: "ui/ux design",
-		image: project4Image,
-		demoLink: "https://example.com/project4",
 		description:
 			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galleyLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
 	},

@@ -5,30 +5,34 @@ import {
 	FaPaintBrush,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { FaDatabase } from "react-icons/fa6";
 
 const services = [
 	{
 		id: 1,
-		title: "Web design",
-		description: "Web development is the process of building, programming...",
+		title: "Full Stack Web & Mobile Development",
+		description: `I build complete, production-ready websites and mobile apps using React, Next.js, React Native, Node.js, and modern databases.
+`,
 		icon: <FaGlobe />,
 	},
 	{
 		id: 2,
-		title: "Mobile app",
-		description: "Web development is the process of building, programming...",
-		icon: <FaMobileAlt />,
+		title: "Database Architecture & Optimization",
+		description: `I create and optimize databases (PostgreSQL, MySQL, MongoDB) to ensure your applications are fast, reliable, and scalable.`,
+		icon: <FaDatabase />,
 	},
 	{
 		id: 3,
-		title: "UI/UX design",
-		description: "Web development is the process of building, programming...",
+		title: "Custom API & Backend Solutions",
+		description: `I design secure, scalable APIs and backend systems to power complex applications and connect services seamlessly.
+`,
 		icon: <FaBezierCurve />,
 	},
 	{
 		id: 4,
-		title: "Graphics design",
-		description: "Web development is the process of building, programming...",
+		title: "UI/UX-Focused Frontend Development",
+		description: `I turn great designs into clean, fast, and accessible user interfaces that deliver an outstanding user experience.
+`,
 		icon: <FaPaintBrush />,
 	},
 ];
@@ -55,8 +59,9 @@ const Service = () => {
 				viewport={{ amount: 0.2 }}
 				transition={{ duration: 0.2, delay: 0.1 }}
 			>
-				I am a frontend developer with 10 years of experience in multiple
-				companies like Microsoft, Tesla, and Apple.
+				I build high-quality web and mobile applications with React, Next.js,
+				React Native, Node.js, and modern databases, delivering fast, scalable,
+				and user-focused solutions.
 			</motion.p>
 
 			{/* Services Grid */}

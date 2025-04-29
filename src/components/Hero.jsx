@@ -38,9 +38,11 @@ const Hero = () => {
 				</h1>
 
 				<p className="text-gray-600">
-					Helping design your business and personal websites built with your
-					demand using HTML, React, and TailwindCSS. Click the demo work button
-					to see my previous projects.
+					a Full Stack Developer specializing in building fast, modern web and
+					mobile applications with React, Next.js, React Native, Node.js, and
+					MySQL. I create scalable, user-centered solutions from backend APIs to
+					polished frontend experiences, helping businesses and ideas come to
+					life through powerful technology.
 				</p>
 
 				{/* Social Media Icons */}

@@ -69,7 +69,7 @@ const ProjectDetails = () => {
 						GitHub
 					</a>
 					<a
-						href="https://www.linkedin.com/in/shadtorh/"
+						href="www.linkedin.com/in/shad-torh-9a2ab2352"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-transform hover:scale-105 shadow"
