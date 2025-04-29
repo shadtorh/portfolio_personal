@@ -54,6 +54,7 @@ const ContactForm = () => {
 				toast.error("Failed to send email. Please try again later.");
 			}
 		} catch (error) {
+			console.error("Error sending email:", error);
 			toast.error(
 				"An error occurred while sending the email. Please try again later."
 			);
@@ -171,7 +172,7 @@ const ContactForm = () => {
 						<button
 							type="submit"
 							disabled={isLoading} // Disable button while loading
-							className={`w-full bg-primary text-primary-content font-bold py-3 rounded-lg hover:bg-primary-focus transition ${
+							className={`w-full bg-primary text-primary-content cursor-pointer font-bold py-3 rounded-lg hover:bg-primary-focus transition ${
 								isLoading ? "opacity-50 cursor-not-allowed" : ""
 							}`}
 						>
