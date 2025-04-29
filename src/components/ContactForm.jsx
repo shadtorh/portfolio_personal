@@ -4,10 +4,12 @@ import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { toast } from "react-toastify"; // Import toast for notifications
 import "react-toastify/dist/ReactToastify.css";
 
+const API = import.meta.env.VITE_API_URL; // Import API URL from environment variables
+
 // Function to send form data to the server
 const sendEmail = async (formData) => {
 	try {
-		const response = await fetch("http://localhost:5000/send-email", {
+		const response = await fetch(`${API}/send-email`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
