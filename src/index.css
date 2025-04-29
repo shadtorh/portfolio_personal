@@ -12,3 +12,10 @@
 		@apply mx-auto max-w-6xl px-8;
 	}
 }
+
+@layer base {
+	html,
+	body {
+		@apply overflow-x-hidden w-full;
+	}
+}

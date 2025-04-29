@@ -1,30 +1,24 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import {
-	Navbar,
-	AboutMe,
-	Hero,
-	ContactForm,
-	Projects,
-	Skills,
-	Footer,
-	Service,
-} from "../components";
+import { Outlet, useLocation } from "react-router-dom";
+import { Navbar, Footer } from "../components";
 
 const HomeLayout = () => {
+	const location = useLocation();
+	const isHomePage = location.pathname === "/";
+
 	return (
-		<div>
+		<div className="flex flex-col min-h-screen">
+			{/* Navbar - fixed at top */}
 			<Navbar />
-			<Hero />
-			<Skills />
-			<AboutMe />
-			<Service />
-			<Projects />
-			<ContactForm />
-			<Footer />
-			<section>
+
+			{/* Main content with proper padding */}
+			<main className="flex-grow w-full pt-24 px-4 md:px-8 lg:px-16 pb-12 max-w-7xl mx-auto">
+				{/* Outlet renders route content */}
 				<Outlet />
-			</section>
+			</main>
+
+			{/* Footer */}
+			<Footer />
 		</div>
 	);
 };

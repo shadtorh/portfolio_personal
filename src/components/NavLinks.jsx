@@ -13,22 +13,15 @@ const NavLinks = () => {
 	return (
 		<>
 			{links.map(({ id, url, text }) => (
-				<li key={id}>
-					<Link
-						smooth={true}
-						duration={500}
-						to={url}
-						className={({ isActive }) =>
-							`capitalize px-4 py-2 rounded-md transition duration-300 ${
-								isActive
-									? "text-primary font-semibold border-b-2 border-primary"
-									: "text-gray-600 hover:text-primary"
-							}`
-						}
-					>
-						{text}
-					</Link>
-				</li>
+				<Link
+					key={id}
+					smooth={true}
+					duration={500}
+					to={url}
+					className="font-medium text-base-content hover:text-primary transition-colors duration-300 cursor-pointer px-2"
+				>
+					{text}
+				</Link>
 			))}
 		</>
 	);
