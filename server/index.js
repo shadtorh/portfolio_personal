@@ -1,8 +1,3 @@
-// require("dotenv").config();
-// const express = require("express");
-// const nodemailer = require("nodemailer");
-// const cors = require("cors");
-// const bodyParser = require("body-parser");
 import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
@@ -13,12 +8,10 @@ dotenv.config();
 
 const app = express();
 app.use(
-	cors(
-		{
-			origin: "http://localhost:5173", // Replace with your frontend URL
-			credentials: true,
-		} // Allow credentials for cookies, authorization headers, or TLS client certificates
-	)
+	cors({
+		origin: "http://localhost:5173",
+		methods: ["GET", "POST"],
+	})
 );
 
 app.use(bodyParser.json());

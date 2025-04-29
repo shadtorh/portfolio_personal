@@ -1,31 +1,45 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import { toast } from "react-toastify"; // Import toast for notifications
+import { toast } from "react-toastify";
+import axios from "axios"; // Import axios
 import "react-toastify/dist/ReactToastify.css";
 
-const API = import.meta.env.VITE_API_URL; // Import API URL from environment variables
+const API = import.meta.env.VITE_API_URL;
 
-// Function to send form data to the server
+// Updated sendEmail function using axios
 const sendEmail = async (formData) => {
 	try {
-		const response = await fetch(`${API}/send-email`, {
-			method: "POST",
+		// Fix URL format and use API variable
+		const response = await axios.post(`${API}/send-email`, formData, {
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(formData),
 		});
-		const data = await response.json();
-		return data; // Return the response data
+
+		// Axios automatically parses JSON responses
+		return response.data;
 	} catch (error) {
 		console.error("Error sending email:", error);
-		throw error; // Throw the error to handle it in the calling function
+
+		// Handle axios specific errors
+		if (error.response) {
+			// The server responded with a status code outside 2xx range
+			throw new Error(`Server error: ${error.response.status}`);
+		} else if (error.request) {
+			// The request was made but no response was received
+			throw new Error(
+				"No response from server. Please check if the server is running."
+			);
+		} else {
+			// Something happened in setting up the request
+			throw error;
+		}
 	}
 };
 
 const ContactForm = () => {
-	const [isLoading, setIsLoading] = useState(false); // State to manage loading status
+	const [isLoading, setIsLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -33,8 +47,8 @@ const ContactForm = () => {
 	});
 
 	const handleChange = (e) => {
-		const { name, value } = e.target; // Correctly destructure 'name' and 'value'
-		setFormData({ ...formData, [name]: value }); // Update the specific field in formData
+		const { name, value } = e.target;
+		setFormData({ ...formData, [name]: value });
 	};
 
 	const handleSubmit = async (e) => {
@@ -43,23 +57,26 @@ const ContactForm = () => {
 			toast.error("Please fill in all fields.");
 			return;
 		}
-		setIsLoading(true); // Set loading state to true
+		setIsLoading(true);
 
 		try {
-			const data = await sendEmail(formData); // Call the sendEmail function
+			const data = await sendEmail(formData);
 			if (data.success) {
 				toast.success("Email sent successfully!");
-				setFormData({ name: "", email: "", message: "" }); // Clear form fields
+				setFormData({ name: "", email: "", message: "" });
 			} else {
-				toast.error("Failed to send email. Please try again later.");
+				toast.error(
+					data.message || "Failed to send email. Please try again later."
+				);
 			}
 		} catch (error) {
 			console.error("Error sending email:", error);
 			toast.error(
-				"An error occurred while sending the email. Please try again later."
+				error.message ||
+					"An error occurred while sending the email. Please try again later."
 			);
 		} finally {
-			setIsLoading(false); // Set loading state to false
+			setIsLoading(false);
 		}
 	};
 
@@ -171,7 +188,7 @@ const ContactForm = () => {
 
 						<button
 							type="submit"
-							disabled={isLoading} // Disable button while loading
+							disabled={isLoading}
 							className={`w-full bg-primary text-primary-content cursor-pointer font-bold py-3 rounded-lg hover:bg-primary-focus transition ${
 								isLoading ? "opacity-50 cursor-not-allowed" : ""
 							}`}
