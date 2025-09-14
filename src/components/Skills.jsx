@@ -16,6 +16,8 @@ import REACT_NATIVE from "../assets/icons/react-native-1.svg";
 import EXPO from "../assets/icons/expo-1.svg";
 import PRISMA from "../assets/icons/prisma-2.svg";
 import REDUX from "../assets/icons/redux.svg";
+import POSTMAN from "../assets/icons/postman.svg";
+import PYTHON from "../assets/icons/python-5.svg";
 
 // Group skills by category
 const skillCategories = [
@@ -53,6 +55,9 @@ const skillCategories = [
 			{ name: "TypeScript", icon: TYPESCRIPT },
 			{ name: "GitHub", icon: GITHUB },
 			{ name: "Redux", icon: REDUX },
+			{ name: "Postman", icon: POSTMAN },
+			{ name: "Python", icon: PYTHON },
+			{ name: "JavaScript", icon: JS },
 		],
 	},
 ];

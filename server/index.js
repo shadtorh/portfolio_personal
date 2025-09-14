@@ -2,41 +2,18 @@ import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
 import bodyParser from "body-parser";
-import path from "path";
-import { fileURLToPath } from "url";
-import { config } from "dotenv";
+import dotenv from "dotenv";
 
-// ES Module compatibility
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
-// Load environment variables
-const env = config().parsed || {};
-const NODE_ENV = env.NODE_ENV || "development";
-const CLIENT_URL = env.CLIENT_URL;
-const EMAIL = env.EMAIL;
-const PASSWORD = env.PASSWORD;
-const PORT = env.PORT || 3001;
+
+dotenv.config();
 
 const app = express();
-
-// Security and optimization middleware
-app.use((req, res, next) => {
-  res.setHeader("X-Content-Type-Options", "nosniff");
-  res.setHeader("X-XSS-Protection", "1; mode=block");
-  res.setHeader("X-Frame-Options", "SAMEORIGIN");
-  next();
-});
-
-// CORS configuration for production and development
 app.use(
-  cors({
-    origin: NODE_ENV === "production" 
-      ? [CLIENT_URL, "https://yourdomain.com"] // Replace with your actual domain
-      : ["http://localhost:5173", "http://localhost:5174", CLIENT_URL],
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
+	cors({
+		origin: process.env.CLIENT_URL,
+		methods: ["GET", "POST"],
+	})
 );
 
 app.use(bodyParser.json());
@@ -44,8 +21,8 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
 	service: "gmail", // Use your email provider
 	auth: {
-		user: EMAIL, // Your email
-		pass: PASSWORD, // App password
+		user: process.env.EMAIL, // Your email
+		pass: process.env.PASSWORD, // App password
 	},
 });
 
