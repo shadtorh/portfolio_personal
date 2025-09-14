@@ -6,11 +6,13 @@ import {
 	Service,
 	Projects,
 	ContactForm,
+	Navbar,
 } from "../components";
 
 const HomePage = () => {
 	return (
 		<>
+			<Navbar />
 			<Hero />
 			<Skills />
 			<AboutMe />

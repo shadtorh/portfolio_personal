@@ -14,13 +14,23 @@
 // ];
 import projectImage1 from "./assets/E-COMMERCES.jpg";
 import projectImage2 from "./assets/JOBCONNECTS.jpg";
-import project3Image from "./assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
+// import project3Image from "./assets/Person-coding-laptop-computer-desktop-desk-office.jpg";
 
 export const projects = [
 	{
 		id: 1,
 		title: "E-Commerce Platform",
 		category: "Web Applications",
+		tags: [
+			"React",
+			"Node.js",
+			"MongoDB",
+			"Stripe",
+			"Tailwind CSS",
+			"JWT",
+			"Express",
+			"Framer Motion",
+		],
 		image: projectImage1, // Path to the video file
 		link: "https://github.com/shadtorh/e-commerce_store-web-app",
 		demoLink: "https://e-commerce-store-web-app-brown.vercel.app",
@@ -51,6 +61,16 @@ export const projects = [
 		id: 2,
 		title: "JobConnect",
 		category: "Web Applications",
+		tags: [
+			"React",
+			"Node.js",
+			"PostgreSQL",
+			"Express",
+			"Tailwind CSS",
+			"VAPI AI",
+			"JWT",
+			"Gemini AI",
+		],
 		image: projectImage2,
 		link: "https://example.com/project2",
 		demoLink: "https://jobconnect-eight.vercel.app",
@@ -61,14 +81,5 @@ export const projects = [
 
 		JobConnect aims to modernize traditional recruitment methods by reducing hiring friction, improving candidate readiness, and creating a smoother experience for both employers and applicants.`,
 	},
-	{
-		id: 3,
-		title: "Photography Site",
-		category: "web design",
-		image: project3Image,
-		link: "https://example.com/project3",
-		demoLink: "https://example.com/project3",
-		description:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galleyLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-	},
+
 ];

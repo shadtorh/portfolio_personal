@@ -17,48 +17,118 @@ import EXPO from "../assets/icons/expo-1.svg";
 import PRISMA from "../assets/icons/prisma-2.svg";
 import REDUX from "../assets/icons/redux.svg";
 
-const skills = [
-	{ name: "HTML", icon: HTML },
-	{ name: "CSS", icon: CSS },
-	{ name: "Tailwind CSS", icon: TAILWIND },
-	{ name: "Next.js", icon: NEXTJS },
-	{ name: "JavaScript", icon: JS },
-	{ name: "TypeScript", icon: TYPESCRIPT },
-	{ name: "React", icon: REACT },
-	{ name: "Node.js", icon: NODE },
-	{ name: "GitHub", icon: GITHUB },
-	{ name: "PostgreSQL", icon: POSTGRESQL },
-	{ name: "Express.js", icon: EXPRESS },
-	{ name: "MongoDB", icon: MONGO_DB },
-	{ name: "React Native", icon: REACT_NATIVE },
-	{ name: "Expo", icon: EXPO },
-	{ name: "Prisma", icon: PRISMA },
+// Group skills by category
+const skillCategories = [
+	{
+		category: "Frontend",
+		skills: [
+			{ name: "HTML", icon: HTML },
+			{ name: "CSS", icon: CSS },
+			{ name: "JavaScript", icon: JS },
+			{ name: "React", icon: REACT },
+			{ name: "Tailwind CSS", icon: TAILWIND },
+			{ name: "Next.js", icon: NEXTJS },
+		],
+	},
+	{
+		category: "Backend",
+		skills: [
+			{ name: "Node.js", icon: NODE },
+			{ name: "Express.js", icon: EXPRESS },
+			{ name: "PostgreSQL", icon: POSTGRESQL },
+			{ name: "MongoDB", icon: MONGO_DB },
+			{ name: "Prisma", icon: PRISMA },
+		],
+	},
+	{
+		category: "Mobile",
+		skills: [
+			{ name: "React Native", icon: REACT_NATIVE },
+			{ name: "Expo", icon: EXPO },
+		],
+	},
+	{
+		category: "Tools & Languages",
+		skills: [
+			{ name: "TypeScript", icon: TYPESCRIPT },
+			{ name: "GitHub", icon: GITHUB },
+			{ name: "Redux", icon: REDUX },
+		],
+	},
 ];
 
 const Skills = () => {
 	return (
-		<section id="skills" className="py-12 bg-base-200 mx-auto md:p-8">
-			<div className="text-center">
-				<h3 className="text-3xl font-bold text-primary mb-4">MY SKILLS</h3>
-				<p className="text-gray-600">Technologies I work with</p>
-			</div>
-
-			<div className="mt-10 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 px-4">
-				{skills.map((skill, index) => (
-					<motion.div
-						key={index}
-						className="flex flex-col items-center p-2 bg-base-100 shadow-md rounded-md hover:shadow-lg transition-all duration-300"
-						initial={{ scale: 0.8, opacity: 0 }}
-						whileInView={{ scale: 1, opacity: 1 }}
-						viewport={{ amount: 0.5 }} // Triggers animation every time 50% of the section is visible
-						transition={{ duration: 0.3, delay: index * 0.1 }}
+		<section id="skills" className="py-16 px-6 bg-base-200 text-base-content">
+			<div className="max-w-6xl mx-auto">
+				{/* Section Header with Accent Bar */}
+				<div className="text-center mb-16">
+					<div className="w-20 h-1 bg-primary mx-auto mb-4"></div>
+					<motion.h2
+						className="text-4xl font-bold mb-4"
+						initial={{ opacity: 0, y: -20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, amount: 0.5 }}
+						transition={{ duration: 0.5 }}
 					>
-						<img src={skill.icon} alt={skill.name} className="w-7 h-7" />
-						<p className="mt-1 font-medium text-[10px] text-center">
-							{skill.name}
-						</p>
-					</motion.div>
-				))}
+						Technical Skills
+					</motion.h2>
+					<motion.p
+						className="text-base-content/70 text-lg max-w-2xl mx-auto"
+						initial={{ opacity: 0 }}
+						whileInView={{ opacity: 1 }}
+						viewport={{ once: true, amount: 0.5 }}
+						transition={{ duration: 0.5, delay: 0.2 }}
+					>
+						I specialize in these technologies to build modern, responsive, and
+						scalable applications
+					</motion.p>
+				</div>
+
+				{/* Skills Categories */}
+				<div className="space-y-12">
+					{skillCategories.map((category, categoryIndex) => (
+						<motion.div
+							key={categoryIndex}
+							className="mb-10"
+							initial={{ opacity: 0, y: 30 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, amount: 0.3 }}
+							transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+						>
+							<h3 className="text-2xl font-semibold mb-6 border-l-4 border-primary pl-3">
+								{category.category}
+							</h3>
+
+							<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+								{category.skills.map((skill, skillIndex) => (
+									<motion.div
+										key={skillIndex}
+										className="bg-base-100 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-4 flex flex-col items-center justify-center group hover:-translate-y-1"
+										initial={{ opacity: 0, scale: 0.8 }}
+										whileInView={{ opacity: 1, scale: 1 }}
+										viewport={{ once: true, amount: 0.5 }}
+										transition={{
+											duration: 0.3,
+											delay: skillIndex * 0.05 + categoryIndex * 0.1,
+										}}
+									>
+										<div className="w-16 h-16 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+											<img
+												src={skill.icon}
+												alt={skill.name}
+												className="w-10 h-10 object-contain"
+											/>
+										</div>
+										<p className="font-medium text-sm text-center">
+											{skill.name}
+										</p>
+									</motion.div>
+								))}
+							</div>
+						</motion.div>
+					))}
+				</div>
 			</div>
 		</section>
 	);

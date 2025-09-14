@@ -2,16 +2,41 @@ import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
 import bodyParser from "body-parser";
-import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+import { config } from "dotenv";
 
-dotenv.config();
+// ES Module compatibility
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load environment variables
+const env = config().parsed || {};
+const NODE_ENV = env.NODE_ENV || "development";
+const CLIENT_URL = env.CLIENT_URL;
+const EMAIL = env.EMAIL;
+const PASSWORD = env.PASSWORD;
+const PORT = env.PORT || 3001;
 
 const app = express();
+
+// Security and optimization middleware
+app.use((req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-XSS-Protection", "1; mode=block");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  next();
+});
+
+// CORS configuration for production and development
 app.use(
-	cors({
-		origin: "http://localhost:5173",
-		methods: ["GET", "POST"],
-	})
+  cors({
+    origin: NODE_ENV === "production" 
+      ? [CLIENT_URL, "https://yourdomain.com"] // Replace with your actual domain
+      : ["http://localhost:5173", "http://localhost:5174", CLIENT_URL],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
 );
 
 app.use(bodyParser.json());
@@ -19,8 +44,8 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
 	service: "gmail", // Use your email provider
 	auth: {
-		user: process.env.EMAIL, // Your email
-		pass: process.env.PASSWORD, // App password
+		user: EMAIL, // Your email
+		pass: PASSWORD, // App password
 	},
 });
 
@@ -61,5 +86,5 @@ app.post("/send-email", async (req, res) => {
 	}
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
