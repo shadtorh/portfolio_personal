@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A3F6F"/>
+      <stop offset="100%" style="stop-color:#080F1E"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6AABFF"/>
+      <stop offset="100%" style="stop-color:#2B6FD4"/>
+    </linearGradient>
+    <linearGradient id="stepGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6AABFF"/>
+      <stop offset="100%" style="stop-color:#4488EE"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <style type="text/css"><![CDATA[
+      @keyframes cc-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3.5px); }
+      }
+      @keyframes cc-tassel {
+        0%, 100% { transform: rotate(-2.5deg); }
+        50% { transform: rotate(3.5deg); }
+      }
+      @keyframes cc-button {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.08); opacity: 0.92; }
+      }
+      @keyframes cc-step-a {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.78; }
+      }
+      @keyframes cc-step-b {
+        0%, 100% { opacity: 0.72; }
+        50% { opacity: 0.95; }
+      }
+      @keyframes cc-step-c {
+        0%, 100% { opacity: 0.45; }
+        50% { opacity: 0.72; }
+      }
+      @keyframes cc-cc {
+        0%, 100% { opacity: 0.28; letter-spacing: 3px; }
+        50% { opacity: 0.42; letter-spacing: 4px; }
+      }
+      #cc-cap-float {
+        animation: cc-float 3.8s ease-in-out infinite;
+        transform-origin: 100px 72px;
+      }
+      #cc-tassel {
+        animation: cc-tassel 2.8s ease-in-out infinite;
+        transform-origin: 148px 68px;
+      }
+      #cc-cap-button {
+        animation: cc-button 2.2s ease-in-out infinite;
+        transform-origin: 100px 44px;
+      }
+      #cc-step-1 { animation: cc-step-a 2.6s ease-in-out infinite; }
+      #cc-step-2 { animation: cc-step-b 2.6s ease-in-out 0.35s infinite; }
+      #cc-step-3 { animation: cc-step-c 2.6s ease-in-out 0.7s infinite; }
+      #cc-watermark {
+        animation: cc-cc 4s ease-in-out infinite;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #cc-cap-float, #cc-tassel, #cc-cap-button,
+        #cc-step-1, #cc-step-2, #cc-step-3, #cc-watermark {
+          animation: none !important;
+        }
+      }
+    ]]></style>
+  </defs>
+
+  <!-- Rounded square -->
+  <rect x="8" y="8" width="184" height="184" rx="38" fill="url(#bgGrad)" filter="url(#shadow)"/>
+
+  <!-- Subtle inner ring -->
+  <rect x="14" y="14" width="172" height="172" rx="32" fill="none" stroke="#4488EE" stroke-width="1" opacity="0.18"/>
+
+  <!-- CC monogram background circle -->
+  <circle cx="100" cy="95" r="62" fill="#0D1E3A" opacity="0.5"/>
+
+  <!-- Cap + board + button — gentle float -->
+  <g id="cc-cap-float">
+    <polygon points="100,44 148,68 100,76 52,68" fill="white" opacity="0.95"/>
+
+    <rect x="56" y="68" width="88" height="8" rx="2" fill="white" opacity="0.85"/>
+
+    <circle id="cc-cap-button" cx="100" cy="44" r="5" fill="url(#blueGrad)"/>
+  </g>
+
+  <!-- Tassel sway -->
+  <g id="cc-tassel">
+    <path d="M148,68 Q158,80 152,100" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.9"/>
+
+    <circle cx="151" cy="103" r="5" fill="url(#blueGrad)"/>
+    <line x1="151" y1="108" x2="148" y2="118" stroke="white" stroke-width="1.5" opacity="0.7"/>
+    <line x1="151" y1="108" x2="153" y2="119" stroke="white" stroke-width="1.5" opacity="0.7"/>
+  </g>
+
+  <!-- Steps — staggered shimmer -->
+  <rect id="cc-step-1" x="58" y="92" width="84" height="12" rx="3" fill="url(#stepGrad1)" opacity="1"/>
+
+  <rect id="cc-step-2" x="65" y="109" width="70" height="12" rx="3" fill="url(#stepGrad1)" opacity="0.72"/>
+
+  <rect id="cc-step-3" x="72" y="126" width="56" height="12" rx="3" fill="url(#stepGrad1)" opacity="0.45"/>
+
+  <!-- CC watermark -->
+  <text id="cc-watermark" x="100" y="158" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#4488EE" text-anchor="middle" opacity="0.35" letter-spacing="3">CC</text>
+
+</svg>

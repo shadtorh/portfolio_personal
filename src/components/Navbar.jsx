@@ -1,148 +1,114 @@
 import { NavLink } from "react-router-dom";
-import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import { HiMenu, HiX } from "react-icons/hi";
 import { useEffect, useState, useRef } from "react";
+import { Link as ScrollLink } from "react-scroll";
 import NavLinks from "./NavLinks";
 import { motion, AnimatePresence } from "framer-motion";
 
-const themes = {
-	winter: "winter",
-	dracula: "dracula",
-};
-
-const getTheme = () => {
-	return localStorage.getItem("theme") || themes.winter;
-};
-
 const Navbar = () => {
-	const [theme, setTheme] = useState(getTheme());
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const menuRef = useRef(null);
-	const buttonRef = useRef(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
 
-	const handleTheme = () => {
-		const { winter, dracula } = themes;
-		const newTheme = theme === winter ? dracula : winter;
-		document.documentElement.setAttribute("data-theme", newTheme);
-		setTheme(newTheme);
-	};
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-	useEffect(() => {
-		document.documentElement.setAttribute("data-theme", theme);
-		localStorage.setItem("theme", theme);
-	}, [theme]);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (buttonRef.current?.contains(event.target)) return;
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        isMenuOpen
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+    if (isMenuOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isMenuOpen]);
 
-	// Fixed click outside handler
-	useEffect(() => {
-		const handleClickOutside = (event) => {
-			// Don't close if clicking the toggle button itself
-			if (buttonRef.current && buttonRef.current.contains(event.target)) {
-				return;
-			}
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && isMenuOpen) setIsMenuOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isMenuOpen]);
 
-			// Close menu if clicking outside menu content and menu is open
-			if (
-				menuRef.current &&
-				!menuRef.current.contains(event.target) &&
-				isMenuOpen
-			) {
-				setIsMenuOpen(false);
-			}
-		};
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "py-3" : "py-5"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
+        <nav
+          className={`glass-nav rounded-2xl px-4 sm:px-6 py-3 flex items-center gap-4 transition-shadow ${
+            scrolled ? "shadow-xl" : ""
+          }`}
+        >
+          <NavLink
+            to="/"
+            className="font-bold text-lg tracking-tight shrink-0"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            <span className="text-primary">S</span>
+            <span className="text-base-content">had</span>
+          </NavLink>
 
-		// Add event listener when menu is open
-		if (isMenuOpen) {
-			document.addEventListener("mousedown", handleClickOutside);
-		}
+          <div className="hidden md:flex flex-1 justify-center">
+            <NavLinks />
+          </div>
 
-		// Clean up event listener
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, [isMenuOpen]);
+          <div className="flex items-center gap-2 ml-auto">
+            <ScrollLink
+              to="contact"
+              smooth
+              duration={500}
+              offset={-80}
+              className="hidden md:inline-flex btn btn-primary btn-sm rounded-xl"
+            >
+              Let&apos;s talk
+            </ScrollLink>
+            <button
+              ref={buttonRef}
+              className="md:hidden btn btn-ghost btn-sm btn-circle"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? (
+                <HiX className="h-5 w-5" />
+              ) : (
+                <HiMenu className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+        </nav>
+      </div>
 
-	// Close menu when window is resized to desktop size
-	useEffect(() => {
-		const handleResize = () => {
-			if (window.innerWidth >= 768 && isMenuOpen) {
-				setIsMenuOpen(false);
-			}
-		};
-
-		window.addEventListener("resize", handleResize);
-		return () => window.removeEventListener("resize", handleResize);
-	}, [isMenuOpen]);
-
-	const toggleMenu = (e) => {
-		e.stopPropagation();
-		setIsMenuOpen(!isMenuOpen);
-	};
-
-	return (
-		<div className="w-full flex justify-center py-6 fixed top-0 z-50">
-			{/* Pill-shaped navbar */}
-			<nav className="bg-base-300 rounded-full px-4 sm:px-8 py-2 flex items-center shadow-lg max-w-3xl w-full">
-				{/* Logo or brand name - visible on mobile */}
-				<div className="md:hidden">
-					<NavLink to="/" className="font-bold text-lg text-primary">
-						ST
-					</NavLink>
-				</div>
-
-				{/* Navigation links - centered (hidden on mobile) */}
-				<div className="hidden md:flex flex-1 justify-center gap-6">
-					<NavLinks />
-				</div>
-
-				{/* Right side controls */}
-				<div className="flex items-center gap-3 ml-auto">
-					{/* Theme toggle */}
-					<label className="swap swap-rotate">
-						<input
-							type="checkbox"
-							onChange={handleTheme}
-							checked={theme === themes.dracula}
-						/>
-						<BsSunFill className="swap-on h-5 w-5" />
-						<BsMoonFill className="swap-off h-5 w-5" />
-					</label>
-
-					{/* Mobile menu toggle - only visible on mobile */}
-					<button
-						ref={buttonRef}
-						className="md:hidden btn btn-sm btn-circle btn-ghost"
-						onClick={toggleMenu}
-						aria-label="Toggle menu"
-						aria-expanded={isMenuOpen}
-					>
-						{isMenuOpen ? (
-							<HiX className="h-5 w-5" />
-						) : (
-							<HiMenu className="h-5 w-5" />
-						)}
-					</button>
-				</div>
-			</nav>
-
-			{/* Mobile menu overlay */}
-			<AnimatePresence>
-				{isMenuOpen && (
-					<motion.div
-						ref={menuRef}
-						className="fixed inset-0 bg-base-100 bg-opacity-95 flex flex-col items-center justify-center z-40 pt-20"
-						initial={{ opacity: 0, y: -20 }}
-						animate={{ opacity: 1, y: 0 }}
-						exit={{ opacity: 0, y: -20 }}
-						transition={{ duration: 0.3 }}
-					>
-						<div className="flex flex-col items-center gap-8 text-xl font-medium">
-							<NavLinks setIsMenuOpen={setIsMenuOpen} />
-						</div>
-					</motion.div>
-				)}
-			</AnimatePresence>
-		</div>
-	);
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            ref={menuRef}
+            className="md:hidden mt-2 mx-4 glass-nav rounded-2xl p-6"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+          >
+            <div className="flex flex-col items-center gap-4 text-lg font-medium">
+              <NavLinks setIsMenuOpen={setIsMenuOpen} mobile />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
 };
 
 export default Navbar;

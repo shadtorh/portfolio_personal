@@ -1,6 +1,7 @@
 export { default as AboutMe } from "./AboutMe";
 export { default as Projects } from "./Projects";
-export { default as ContactForm } from "./ContactForm";
+export { default as Contact } from "./Contact";
+export { default as QuickNav } from "./QuickNav";
 export { default as Footer } from "./Footer";
 export { default as Navbar } from "./Navbar";
 export { default as Hero } from "./Hero";

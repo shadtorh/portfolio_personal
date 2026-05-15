@@ -1,26 +1,27 @@
-import React from "react";
 import {
-	Hero,
-	Skills,
-	AboutMe,
-	Service,
-	Projects,
-	ContactForm,
-	Navbar,
+  Hero,
+  QuickNav,
+  Projects,
+  AboutMe,
+  Skills,
+  Service,
+  Contact,
+  Navbar,
 } from "../components";
 
 const HomePage = () => {
-	return (
-		<>
-			<Navbar />
-			<Hero />
-			<Skills />
-			<AboutMe />
-			<Service />
-			<Projects />
-			<ContactForm />
-		</>
-	);
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <QuickNav />
+      <Projects />
+      <AboutMe />
+      <Skills />
+      <Service />
+      <Contact />
+    </>
+  );
 };
 
 export default HomePage;

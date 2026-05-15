@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import HTML from "../assets/icons/html-1.svg";
 import CSS from "../assets/icons/css-3.svg";
@@ -18,125 +17,98 @@ import PRISMA from "../assets/icons/prisma-2.svg";
 import REDUX from "../assets/icons/redux.svg";
 import POSTMAN from "../assets/icons/postman.svg";
 import PYTHON from "../assets/icons/python-5.svg";
+import SectionHeader from "./SectionHeader";
 
-// Group skills by category
 const skillCategories = [
-	{
-		category: "Frontend",
-		skills: [
-			{ name: "HTML", icon: HTML },
-			{ name: "CSS", icon: CSS },
-			{ name: "JavaScript", icon: JS },
-			{ name: "React", icon: REACT },
-			{ name: "Tailwind CSS", icon: TAILWIND },
-			{ name: "Next.js", icon: NEXTJS },
-		],
-	},
-	{
-		category: "Backend",
-		skills: [
-			{ name: "Node.js", icon: NODE },
-			{ name: "Express.js", icon: EXPRESS },
-			{ name: "PostgreSQL", icon: POSTGRESQL },
-			{ name: "MongoDB", icon: MONGO_DB },
-			{ name: "Prisma", icon: PRISMA },
-		],
-	},
-	{
-		category: "Mobile",
-		skills: [
-			{ name: "React Native", icon: REACT_NATIVE },
-			{ name: "Expo", icon: EXPO },
-		],
-	},
-	{
-		category: "Tools & Languages",
-		skills: [
-			{ name: "TypeScript", icon: TYPESCRIPT },
-			{ name: "GitHub", icon: GITHUB },
-			{ name: "Redux", icon: REDUX },
-			{ name: "Postman", icon: POSTMAN },
-			{ name: "Python", icon: PYTHON },
-			{ name: "JavaScript", icon: JS },
-		],
-	},
+  {
+    category: "Frontend",
+    skills: [
+      { name: "HTML", icon: HTML },
+      { name: "CSS", icon: CSS },
+      { name: "JavaScript", icon: JS },
+      { name: "TypeScript", icon: TYPESCRIPT },
+      { name: "React", icon: REACT },
+      { name: "Next.js", icon: NEXTJS },
+      { name: "Tailwind", icon: TAILWIND },
+    ],
+  },
+  {
+    category: "Backend",
+    skills: [
+      { name: "Node.js", icon: NODE },
+      { name: "Express", icon: EXPRESS },
+      { name: "PostgreSQL", icon: POSTGRESQL },
+      { name: "MongoDB", icon: MONGO_DB },
+      { name: "Prisma", icon: PRISMA },
+      { name: "Python", icon: PYTHON },
+    ],
+  },
+  {
+    category: "Mobile & Tools",
+    skills: [
+      { name: "React Native", icon: REACT_NATIVE },
+      { name: "Expo", icon: EXPO },
+      { name: "Redux", icon: REDUX },
+      { name: "GitHub", icon: GITHUB },
+      { name: "Postman", icon: POSTMAN },
+    ],
+  },
 ];
 
 const Skills = () => {
-	return (
-		<section id="skills" className="py-16 px-6 bg-base-200 text-base-content">
-			<div className="max-w-6xl mx-auto">
-				{/* Section Header with Accent Bar */}
-				<div className="text-center mb-16">
-					<div className="w-20 h-1 bg-primary mx-auto mb-4"></div>
-					<motion.h2
-						className="text-4xl font-bold mb-4"
-						initial={{ opacity: 0, y: -20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, amount: 0.5 }}
-						transition={{ duration: 0.5 }}
-					>
-						Technical Skills
-					</motion.h2>
-					<motion.p
-						className="text-base-content/70 text-lg max-w-2xl mx-auto"
-						initial={{ opacity: 0 }}
-						whileInView={{ opacity: 1 }}
-						viewport={{ once: true, amount: 0.5 }}
-						transition={{ duration: 0.5, delay: 0.2 }}
-					>
-						I specialize in these technologies to build modern, responsive, and
-						scalable applications
-					</motion.p>
-				</div>
+  return (
+    <section id="skills" className="section-shell bg-base-100 mesh-bg">
+      <div className="section-inner">
+        <SectionHeader
+          label="Skills"
+          title="Technologies I work with"
+          description="The stack I use to build fast, accessible, and scalable applications."
+        />
 
-				{/* Skills Categories */}
-				<div className="space-y-12">
-					{skillCategories.map((category, categoryIndex) => (
-						<motion.div
-							key={categoryIndex}
-							className="mb-10"
-							initial={{ opacity: 0, y: 30 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true, amount: 0.3 }}
-							transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-						>
-							<h3 className="text-2xl font-semibold mb-6 border-l-4 border-primary pl-3">
-								{category.category}
-							</h3>
-
-							<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-								{category.skills.map((skill, skillIndex) => (
-									<motion.div
-										key={skillIndex}
-										className="bg-base-100 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-4 flex flex-col items-center justify-center group hover:-translate-y-1"
-										initial={{ opacity: 0, scale: 0.8 }}
-										whileInView={{ opacity: 1, scale: 1 }}
-										viewport={{ once: true, amount: 0.5 }}
-										transition={{
-											duration: 0.3,
-											delay: skillIndex * 0.05 + categoryIndex * 0.1,
-										}}
-									>
-										<div className="w-16 h-16 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-											<img
-												src={skill.icon}
-												alt={skill.name}
-												className="w-10 h-10 object-contain"
-											/>
-										</div>
-										<p className="font-medium text-sm text-center">
-											{skill.name}
-										</p>
-									</motion.div>
-								))}
-							</div>
-						</motion.div>
-					))}
-				</div>
-			</div>
-		</section>
-	);
+        <div className="space-y-10">
+          {skillCategories.map((category, categoryIndex) => (
+            <motion.div
+              key={category.category}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: categoryIndex * 0.08 }}
+            >
+              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                <span className="w-1 h-5 bg-primary rounded-full" />
+                {category.category}
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+                {category.skills.map((skill, skillIndex) => (
+                  <motion.div
+                    key={skill.name}
+                    className="glass-card p-4 flex flex-col items-center gap-2 hover:border-primary/30 transition-colors"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.25,
+                      delay: skillIndex * 0.04 + categoryIndex * 0.05,
+                    }}
+                    whileHover={{ y: -2 }}
+                  >
+                    <img
+                      src={skill.icon}
+                      alt={skill.name}
+                      className="w-9 h-9 object-contain"
+                    />
+                    <span className="text-xs font-medium text-center text-base-content/80">
+                      {skill.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Skills;
