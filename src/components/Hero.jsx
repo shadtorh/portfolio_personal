@@ -32,6 +32,8 @@ const Hero = () => {
               <div className="h-10 md:h-12">
                 <TypeAnimation
                   sequence={[
+                    "Software Engineer",
+                    2000,
                     "Full Stack Developer",
                     2000,
                     "SaaS Engineer",
