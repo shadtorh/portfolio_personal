@@ -3,7 +3,6 @@ import { HiMenu, HiX } from "react-icons/hi";
 import { useEffect, useState, useRef } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import NavLinks from "./NavLinks";
-import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -92,21 +91,16 @@ const Navbar = () => {
         </nav>
       </div>
 
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            ref={menuRef}
-            className="md:hidden mt-2 mx-4 glass-nav rounded-2xl p-6"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-          >
-            <div className="flex flex-col items-center gap-4 text-lg font-medium">
-              <NavLinks setIsMenuOpen={setIsMenuOpen} mobile />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isMenuOpen && (
+        <div
+          ref={menuRef}
+          className="md:hidden mt-2 mx-4 glass-nav rounded-2xl p-6 mobile-menu-enter"
+        >
+          <div className="flex flex-col items-center gap-4 text-lg font-medium">
+            <NavLinks setIsMenuOpen={setIsMenuOpen} mobile />
+          </div>
+        </div>
+      )}
     </header>
   );
 };

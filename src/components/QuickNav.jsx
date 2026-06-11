@@ -1,5 +1,4 @@
 import { Link } from "react-scroll";
-import { motion } from "framer-motion";
 import {
   FaRocket,
   FaUser,
@@ -7,6 +6,7 @@ import {
   FaEnvelope,
   FaArrowRight,
 } from "react-icons/fa";
+import Reveal from "./Reveal";
 
 const items = [
   {
@@ -48,12 +48,7 @@ const QuickNav = () => {
   return (
     <section className="relative z-10 -mt-8 pb-4 px-6 md:px-10 lg:px-16">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
-        >
+        <Reveal>
           <p className="text-center text-sm font-medium text-base-content/50 mb-4 tracking-wide uppercase">
             Find what you&apos;re looking for
           </p>
@@ -69,12 +64,9 @@ const QuickNav = () => {
                   offset={-80}
                   className="quick-nav-card group"
                 >
-                  <motion.div
+                  <Reveal
+                    delay={index * 60}
                     className={`h-full p-5 rounded-2xl border bg-gradient-to-br ${item.color} backdrop-blur-sm transition-all duration-300 group-hover:border-primary/40 group-hover:-translate-y-1`}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.06, duration: 0.4 }}
                   >
                     <div
                       className={`w-10 h-10 rounded-xl bg-base-100/80 flex items-center justify-center mb-3 ${item.iconColor}`}
@@ -88,12 +80,12 @@ const QuickNav = () => {
                     <p className="text-sm text-base-content/55 leading-snug">
                       {item.description}
                     </p>
-                  </motion.div>
+                  </Reveal>
                 </Link>
               );
             })}
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

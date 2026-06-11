@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { projects } from "../data";
 import {
   FaArrowLeft,
@@ -10,6 +9,7 @@ import {
   FaCalendarAlt,
 } from "react-icons/fa";
 import { BsBoxSeam } from "react-icons/bs";
+import { CONTACT } from "../constants/contact";
 
 const ProjectDetails = () => {
   const { id } = useParams();
@@ -40,12 +40,7 @@ const ProjectDetails = () => {
     .slice(0, 2);
 
   return (
-    <motion.div
-      className="bg-base-200 min-h-screen pt-24 pb-16"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.4 }}
-    >
+    <div className="bg-base-200 min-h-screen pt-24 pb-16 hero-animate-in">
       <div className="max-w-4xl mx-auto px-6">
         <nav className="text-sm breadcrumbs mb-6 opacity-70">
           <ul>
@@ -72,6 +67,10 @@ const ProjectDetails = () => {
             <img
               src={project.image}
               alt={project.title}
+              width={800}
+              height={400}
+              loading="lazy"
+              decoding="async"
               className={`w-full h-full ${project.imageClass || "object-cover"}`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-base-100 to-transparent" />
@@ -167,7 +166,7 @@ const ProjectDetails = () => {
                 </a>
               )}
               <a
-                href="https://linkedin.com/in/shad-torh-9a2ab2352"
+                href={CONTACT.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-ghost rounded-xl gap-2"
@@ -192,6 +191,10 @@ const ProjectDetails = () => {
                     <img
                       src={related.image}
                       alt={related.title}
+                      width={400}
+                      height={160}
+                      loading="lazy"
+                      decoding="async"
                       className={`w-full h-full group-hover:scale-105 transition-transform duration-300 ${related.imageClass || "object-cover"}`}
                     />
                   </figure>
@@ -207,7 +210,7 @@ const ProjectDetails = () => {
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,7 +1,15 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ProjectDetails } from "./components";
 import HomeLayout from "./pages/HomeLayout";
 import HomePage from "./pages/HomePage";
+
+const ProjectDetails = lazy(() => import("./components/ProjectDetails"));
+
+const PageLoader = () => (
+  <div className="min-h-[50vh] flex items-center justify-center bg-base-200">
+    <span className="loading loading-spinner loading-lg text-primary" />
+  </div>
+);
 
 const router = createBrowserRouter([
   {
@@ -14,7 +22,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/project/:id",
-        element: <ProjectDetails />,
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ProjectDetails />
+          </Suspense>
+        ),
       },
     ],
   },

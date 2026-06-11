@@ -1,4 +1,4 @@
-const EMAIL = "shadtorh90@gmail.com";
+const EMAIL = "torhshad90@gmail.com";
 
 export const CONTACT = {
   email: EMAIL,

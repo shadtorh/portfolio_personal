@@ -1,7 +1,6 @@
 import { FaGithub, FaLinkedinIn, FaArrowDown } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import { Link as ScrollLink } from "react-scroll";
-import { motion } from "framer-motion";
 import HeroImage from "../assets/HeroImage.svg";
 import { CONTACT } from "../constants/contact";
 
@@ -17,12 +16,7 @@ const Hero = () => {
 
       <div className="section-inner relative z-10 w-full max-w-6xl mx-auto px-6 md:px-10 lg:px-16">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          <motion.div
-            className="w-full lg:w-[55%] text-center lg:text-left space-y-7"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
+          <div className="hero-animate-in w-full lg:w-[55%] text-center lg:text-left space-y-7">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-sm text-base-content/70 border border-primary/20">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Founder at Shadron Systems · Building CampusCore
@@ -96,33 +90,28 @@ const Hero = () => {
                 </button>
               </ScrollLink>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="w-full lg:w-[45%] flex justify-center"
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-          >
+          <div className="hero-animate-in-delay w-full lg:w-[45%] flex justify-center">
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/25 via-secondary/15 to-transparent blur-2xl" />
               <div className="relative glass-card p-6 rounded-3xl ring-1 ring-primary/10">
                 <img
                   src={HeroImage}
                   alt="Developer illustration"
+                  width={448}
+                  height={448}
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-full max-w-sm md:max-w-md"
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block animate-scroll-bounce">
         <ScrollLink to="projects" smooth duration={500} offset={-80}>
           <button
             type="button"
@@ -132,7 +121,7 @@ const Hero = () => {
             <FaArrowDown className="text-primary opacity-70" />
           </button>
         </ScrollLink>
-      </motion.div>
+      </div>
     </section>
   );
 };

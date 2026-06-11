@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import HTML from "../assets/icons/html-1.svg";
 import CSS from "../assets/icons/css-3.svg";
 import JS from "../assets/icons/logo-javascript.svg";
@@ -18,6 +17,7 @@ import REDUX from "../assets/icons/redux.svg";
 import POSTMAN from "../assets/icons/postman.svg";
 import PYTHON from "../assets/icons/python-5.svg";
 import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 
 const skillCategories = [
   {
@@ -67,43 +67,33 @@ const Skills = () => {
 
         <div className="space-y-10">
           {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.category}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: categoryIndex * 0.08 }}
-            >
+            <Reveal key={category.category} delay={categoryIndex * 80}>
               <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                 <span className="w-1 h-5 bg-primary rounded-full" />
                 {category.category}
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.div
+                {category.skills.map((skill) => (
+                  <div
                     key={skill.name}
-                    className="glass-card p-4 flex flex-col items-center gap-2 hover:border-primary/30 transition-colors"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.25,
-                      delay: skillIndex * 0.04 + categoryIndex * 0.05,
-                    }}
-                    whileHover={{ y: -2 }}
+                    className="glass-card p-4 flex flex-col items-center gap-2 hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-200"
                   >
                     <img
                       src={skill.icon}
-                      alt={skill.name}
+                      alt=""
+                      width={36}
+                      height={36}
+                      loading="lazy"
+                      decoding="async"
                       className="w-9 h-9 object-contain"
                     />
                     <span className="text-xs font-medium text-center text-base-content/80">
                       {skill.name}
                     </span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

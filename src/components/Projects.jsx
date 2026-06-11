@@ -1,8 +1,8 @@
 import { FaAngleRight, FaExternalLinkAlt } from "react-icons/fa";
 import { projects } from "../data";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 
 const project = projects[0];
 
@@ -16,18 +16,19 @@ const Projects = () => {
           description="The first release from Shadron Systems — a school management platform built for Liberian K–12 schools."
         />
 
-        <motion.article
+        <Reveal
+          as="article"
           className="glass-card overflow-hidden group hover:border-primary/30 transition-all duration-300"
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
         >
           <figure className="relative h-64 md:h-80 overflow-hidden">
             <img
               className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${project.imageClass || "object-cover"}`}
               src={project.image}
               alt={project.title}
+              width={640}
+              height={400}
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-base-100 via-transparent to-transparent opacity-90" />
             <div className="absolute top-4 left-4">
@@ -76,7 +77,7 @@ const Projects = () => {
               )}
             </div>
           </div>
-        </motion.article>
+        </Reveal>
       </div>
     </section>
   );

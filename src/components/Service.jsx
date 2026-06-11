@@ -1,8 +1,8 @@
 import { FaGlobe, FaPaintBrush } from "react-icons/fa";
 import { FaDatabase } from "react-icons/fa6";
 import { TbApi } from "react-icons/tb";
-import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 
 const services = [
   {
@@ -33,7 +33,7 @@ const services = [
     id: 4,
     title: "UI/UX Frontend",
     description:
-      "Polished, accessible interfaces with Tailwind CSS, motion, and design systems that users love.",
+      "Polished, accessible interfaces with Tailwind CSS and design systems that users love.",
     icon: FaPaintBrush,
     accent: "primary",
   },
@@ -59,14 +59,10 @@ const Service = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <motion.div
+              <Reveal
                 key={service.id}
-                className={`glass-card p-6 md:p-8 border-l-4 ${accentMap[service.accent]}`}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                whileHover={{ y: -3 }}
+                delay={index * 80}
+                className={`glass-card p-6 md:p-8 border-l-4 hover:-translate-y-0.5 transition-transform duration-200 ${accentMap[service.accent]}`}
               >
                 <div
                   className={`w-12 h-12 rounded-xl bg-base-200 flex items-center justify-center mb-4 ${accentMap[service.accent].split(" ")[0]}`}
@@ -77,7 +73,7 @@ const Service = () => {
                 <p className="text-base-content/65 leading-relaxed">
                   {service.description}
                 </p>
-              </motion.div>
+              </Reveal>
             );
           })}
         </div>

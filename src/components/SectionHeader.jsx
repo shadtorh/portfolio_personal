@@ -1,15 +1,11 @@
-import { motion } from "framer-motion";
+import Reveal from "./Reveal";
 
 const SectionHeader = ({ label, title, description, align = "center" }) => {
   const isCenter = align === "center";
 
   return (
-    <motion.div
+    <Reveal
       className={`mb-14 md:mb-16 ${isCenter ? "text-center" : "text-left"}`}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.5 }}
     >
       {label && (
         <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-3">
@@ -26,7 +22,7 @@ const SectionHeader = ({ label, title, description, align = "center" }) => {
           {description}
         </p>
       )}
-    </motion.div>
+    </Reveal>
   );
 };
 

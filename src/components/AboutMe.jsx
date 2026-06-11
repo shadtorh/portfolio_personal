@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
-import ProfileImg from "../assets/devtorh.PNG";
+import ProfileImg from "../assets/devtorh-800.jpg";
 import SectionHeader from "./SectionHeader";
+import Reveal from "./Reveal";
 import { CONTACT } from "../constants/contact";
 
 const stats = [
@@ -22,30 +22,25 @@ const AboutMe = () => {
         />
 
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          <motion.div
+          <Reveal
+            direction="left"
             className="w-full lg:w-2/5 flex justify-center shrink-0"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
           >
             <div className="relative">
               <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-primary/40 to-secondary/30 blur-md opacity-60" />
               <img
                 src={ProfileImg}
                 alt="Shad Torh"
+                width={800}
+                height={1000}
+                loading="lazy"
+                decoding="async"
                 className="relative w-full max-w-sm rounded-3xl object-cover aspect-[4/5] border border-base-content/10 shadow-2xl"
               />
             </div>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            className="w-full lg:w-3/5 space-y-6"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-          >
+          <Reveal direction="right" className="w-full lg:w-3/5 space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {stats.map(({ label, value }) => (
                 <div key={label} className="glass-card p-4 rounded-xl">
@@ -105,7 +100,7 @@ const AboutMe = () => {
                 <FaEnvelope />
               </a>
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

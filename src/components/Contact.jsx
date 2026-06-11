@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import Reveal from "./Reveal";
 import {
   FaEnvelope,
   FaPhone,
@@ -55,13 +55,7 @@ const Contact = () => {
           description="Open to freelance, contract, and full-time opportunities. Reach out directly — I read every message."
         />
 
-        <motion.div
-          className="contact-spotlight mx-auto w-full max-w-lg sm:max-w-2xl lg:max-w-3xl"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.45 }}
-        >
+        <Reveal className="contact-spotlight mx-auto w-full max-w-lg sm:max-w-2xl lg:max-w-3xl">
           <div className="mb-8 flex flex-col items-stretch gap-3 sm:mb-10 sm:items-center">
             <a
               href={CONTACT.mailto("Hello Shad — I'd like to connect")}
@@ -158,7 +152,7 @@ const Contact = () => {
               ))}
             </div>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

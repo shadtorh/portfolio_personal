@@ -40,6 +40,22 @@
     scroll-behavior: smooth;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .reveal,
+    .hero-animate-in,
+    .hero-animate-in-delay,
+    .animate-scroll-bounce {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
   html,
   body,
   #root {
@@ -131,5 +147,79 @@
 
   .contact-card-icon {
     @apply w-11 h-11 shrink-0 rounded-xl bg-primary/15 text-primary flex items-center justify-center text-lg;
+  }
+
+  .reveal {
+    opacity: 0;
+    transition:
+      opacity 0.55s ease,
+      transform 0.55s ease;
+    will-change: opacity, transform;
+  }
+
+  .reveal--up {
+    transform: translateY(24px);
+  }
+
+  .reveal--left {
+    transform: translateX(-32px);
+  }
+
+  .reveal--right {
+    transform: translateX(32px);
+  }
+
+  .reveal--visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-animate-in {
+    animation: hero-fade-in 0.7s ease forwards;
+  }
+
+  .hero-animate-in-delay {
+    opacity: 0;
+    animation: hero-fade-in 0.7s ease 0.15s forwards;
+  }
+
+  .animate-scroll-bounce {
+    animation: scroll-bounce 2s ease-in-out infinite;
+  }
+
+  .mobile-menu-enter {
+    animation: menu-slide-in 0.25s ease forwards;
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes menu-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
