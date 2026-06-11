@@ -1,5 +1,5 @@
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
-import ProfileImg from "../assets/devtorh-800.jpg";
+import ProfileImg from "../assets/about-image.jpeg";
 import SectionHeader from "./SectionHeader";
 import Reveal from "./Reveal";
 import { CONTACT } from "../constants/contact";
@@ -31,11 +31,11 @@ const AboutMe = () => {
               <img
                 src={ProfileImg}
                 alt="Shad Torh"
-                width={800}
-                height={1000}
+                width={768}
+                height={1024}
                 loading="lazy"
                 decoding="async"
-                className="relative w-full max-w-sm rounded-3xl object-cover aspect-[4/5] border border-base-content/10 shadow-2xl"
+                className="relative w-full max-w-sm rounded-3xl object-cover aspect-[3/4] border border-base-content/10 shadow-2xl"
               />
             </div>
           </Reveal>
